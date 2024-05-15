@@ -118,7 +118,7 @@ In this implementation:
 - `.header()` takes a hashmap for the headers sets headers for the request.
 - `.enableLog()` takes a boolean as param that enables logging for debugging purposes based on the build configuration.
 - `.setPriority(ThreadExecutor.DEFAULT)` sets the priority of the thread for the request execution, different priorities are accessible by ThreadExecutor class (DEFAULT, MEDIUM, HIGH).
-- `.execute(...)` executes the request with the specified response listeners for handling different types of responses (String, JSONObject, JSONArray).
+- `.execute(...)` executes the request with the specified response listeners for handling different types of responses (String, JSONObject, JSONArray), you can choose any one as per your usecase.
 
 ## Support
 
