@@ -4,7 +4,7 @@ A lightweight and easy-to-use Kotlin library for making network calls in Android
 
 ## Features
 
-- Simple API for making GET, POST, PUT, and DELETE requests.
+- Simple API for making GET, POST, PUT, and PATCH requests.
 - Easily customizable for specific use cases.
 - Option to set thread priority for network calls.
 - Provides listeners for handling responses as JSONArray, JSONObject, and String.
