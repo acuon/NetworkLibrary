@@ -66,7 +66,7 @@ This addition will enable Gradle to resolve dependencies from the specified Mave
 
 ## Usage
 
-### Making a Netowork Request
+### Making a Network Request
 ```kotlin
 Http.Request()
     .requestType(RequestType.GET)
