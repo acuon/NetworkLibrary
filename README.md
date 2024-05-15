@@ -110,7 +110,7 @@ Http.Request()
 In this implementation:
 
 - `Http.Request()` initializes a new HTTP request.
-- `.requestType()` specifies the type of request (GET, POST, PUT, DELETE, etc.), access the request types from RequestType enum class
+- `.requestType()` specifies the type of request (GET, POST, PUT, PATCH, etc.), access the request types from RequestType enum class
 - `.baseUrl()` takes a string param and sets the base URL for the request.
 - `.endpoint()` takes a string and sets the endpoint for the request.
 - `.contentType()` sets the content type of the request, accessible by ContentType enum class.
