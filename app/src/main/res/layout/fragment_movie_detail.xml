@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.acuon.networklibrary.ui.movie_detail.viewmodel.MovieDetailViewModel" />
+
+        <variable
+            name="movieUiState"
+            type="com.acuon.networklibrary.ui.movie_detail.MovieDetailUIState" />
+
+        <import type="android.view.View" />
+
+        <import type="com.acuon.networklibrary.R" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:paddingBottom="@dimen/_8dp">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/include_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            android:fillViewport="true"
+            android:visibility="@{movieUiState.isSuccess ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_movie_poster"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_24dp"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:layout_marginRight="@dimen/_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_poster"
+                        android:layout_width="@dimen/_100dp"
+                        android:layout_height="@dimen/_0dp"
+                        android:scaleType="fitXY"
+                        app:cornerRadius="@{16}"
+                        app:imageURL="@{movieUiState.data.fullPosterPath}"
+                        app:layout_constraintDimensionRatio="2:3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_launcher_background" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:layout_marginEnd="@dimen/_4dp"
+                        android:layout_marginBottom="@dimen/_4dp"
+                        android:text="@{movieUiState.data.originalTitle}"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/ts_22sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_poster"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="track name" />
+
+                    <LinearLayout
+                        android:id="@+id/container_movie_detail"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_8dp"
+                        android:layout_marginTop="@dimen/_8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/iv_poster"
+                        app:layout_constraintTop_toBottomOf="@id/tv_name">
+
+                        <TextView
+                            android:id="@+id/tv_release_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/ts_16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_name"
+                            app:text="@{movieUiState.data.releaseDate + `(` + movieUiState.data.country + `)`}"
+                            tools:text="date" />
+
+                        <View
+                            android:layout_width="@dimen/_2dp"
+                            android:layout_height="@dimen/_2dp"
+                            android:layout_marginHorizontal="@dimen/_8dp"
+                            android:background="@color/divider_grey" />
+
+                        <TextView
+                            android:id="@+id/tv_movie_length"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/ts_16sp"
+                            app:text="@{movieUiState.data.runtimeInMinutes}"
+                            tools:text="length" />
+
+                        <View
+                            android:layout_width="@dimen/_2dp"
+                            android:layout_height="@dimen/_2dp"
+                            android:layout_marginHorizontal="@dimen/_8dp"
+                            android:background="@color/divider_grey"
+                            android:visibility="@{movieUiState.data.adult ? View.VISIBLE : View.GONE}" />
+
+                        <TextView
+                            android:id="@+id/tv_content_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded_corner_8dp_white_stroke"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:padding="@dimen/_4dp"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/ts_14sp"
+                            android:visibility="@{movieUiState.data.adult ? View.VISIBLE : View.GONE}"
+                            app:text="@{`18+`}"
+                            tools:text="content" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_genre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/ts_16sp"
+                        app:layout_constraintStart_toEndOf="@id/iv_poster"
+                        app:layout_constraintTop_toBottomOf="@id/container_movie_detail"
+                        app:text="@{movieUiState.data.flattenGenre}"
+                        tools:text="Adventure" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2dp"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:background="@color/divider_grey"
+                    app:layout_constraintTop_toBottomOf="@id/container_movie_poster" />
+
+                <RadioGroup
+                    android:id="@+id/rg_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_24dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider1">
+
+                    <RadioButton
+                        android:id="@+id/rb_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="start|center_vertical"
+                        android:layoutDirection="rtl"
+                        android:paddingHorizontal="@dimen/_16dp"
+                        android:paddingVertical="@dimen/_8dp"
+                        android:text="@string/description"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/ts_16sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_trailer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_4dp"
+                        android:background="@drawable/custom_radio_button"
+                        android:button="@null"
+                        android:gravity="start|center_vertical"
+                        android:layoutDirection="rtl"
+                        android:paddingHorizontal="@dimen/_16dp"
+                        android:paddingVertical="@dimen/_8dp"
+                        android:text="@string/trailer"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/ts_16sp" />
+
+                </RadioGroup>
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_2dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:background="@color/divider_grey"
+                    app:layout_constraintTop_toBottomOf="@id/rg_options" />
+
+                <TextView
+                    android:id="@+id/tv_long_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_24dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:background="@drawable/bg_rounded_corner_8dp"
+                    android:backgroundTint="@color/transparent_grey"
+                    android:padding="@dimen/_8dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/ts_16sp"
+                    app:layout_constraintTop_toBottomOf="@id/divider2"
+                    app:text="@{movieUiState.data.overview}"
+                    tools:text="Long Description\nLong Description\nLong Description\nLong Description\nLong Description\nLong Description" />
+
+                <WebView
+                    android:id="@+id/web_view_trailer"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_0dp"
+                    android:layout_marginHorizontal="@dimen/_24dp"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:visibility="gone"
+                    app:layout_constraintDimensionRatio="3:2"
+                    app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{movieUiState.isLoading? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/transparent_grey"
+            android:text="@string/retry"
+            android:textColor="@color/white"
+            android:visibility="@{movieUiState.isError ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_30dp"
+            android:gravity="center"
+            android:text="@{movieUiState.getErrorMessage(context)}"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:visibility="@{movieUiState.isError ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="@+id/btn_retry"
+            app:layout_constraintStart_toStartOf="@+id/btn_retry"
+            app:layout_constraintTop_toBottomOf="@+id/btn_retry"
+            tools:text="Internet Connection Failed"
+            tools:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/empty_view"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="@dimen/_100dp"
+            android:src="@drawable/ic_empty"
+            android:visibility="@{movieUiState.isEmpty ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

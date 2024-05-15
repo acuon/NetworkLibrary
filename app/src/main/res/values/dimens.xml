@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="_0dp">0dp</dimen>
+    <dimen name="_1dp">1dp</dimen>
+    <dimen name="_2dp">2dp</dimen>
+    <dimen name="_4dp">4dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="_8dp">8dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_12dp">12dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_3dp">3dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_24dp">24dp</dimen>
+    <dimen name="_96dp">96dp</dimen>
+    <dimen name="_100dp">100dp</dimen>
+    <dimen name="_15dp">15dp</dimen>
+    <dimen name="_16dp">16dp</dimen>
+
+    <!-- TextSize -->
+    <dimen name="ts_1sp">1sp</dimen>
+    <dimen name="ts_2sp">2sp</dimen>
+    <dimen name="ts_3sp">3sp</dimen>
+    <dimen name="ts_4sp">4sp</dimen>
+    <dimen name="ts_5sp">5sp</dimen>
+    <dimen name="ts_6sp">6sp</dimen>
+    <dimen name="ts_7sp">7sp</dimen>
+    <dimen name="ts_8sp">8sp</dimen>
+    <dimen name="ts_9sp">9sp</dimen>
+    <dimen name="ts_10sp">10sp</dimen>
+    <dimen name="ts_11sp">11sp</dimen>
+    <dimen name="ts_12sp">12sp</dimen>
+    <dimen name="ts_13sp">13sp</dimen>
+    <dimen name="ts_14sp">14sp</dimen>
+    <dimen name="ts_15sp">15sp</dimen>
+    <dimen name="ts_16sp">16sp</dimen>
+    <dimen name="ts_17sp">17sp</dimen>
+    <dimen name="ts_18sp">18sp</dimen>
+    <dimen name="ts_19sp">19sp</dimen>
+    <dimen name="ts_20sp">20sp</dimen>
+    <dimen name="ts_21sp">21sp</dimen>
+    <dimen name="ts_22sp">22sp</dimen>
+    <dimen name="ts_23sp">23sp</dimen>
+    <dimen name="ts_24sp">24sp</dimen>
+    <dimen name="ts_25sp">25sp</dimen>
+    <dimen name="ts_26sp">26sp</dimen>
+    <dimen name="ts_27sp">27sp</dimen>
+    <dimen name="ts_28sp">28sp</dimen>
+    <dimen name="ts_29sp">29sp</dimen>
+    <dimen name="ts_30sp">30sp</dimen>
+    <dimen name="ts_32sp">32sp</dimen>
+    <dimen name="ts_34sp">34sp</dimen>
+    <dimen name="ts_36sp">36sp</dimen>
+    <dimen name="ts_38sp">38sp</dimen>
+    <dimen name="ts_40sp">40sp</dimen>
+    <dimen name="ts_44sp">44sp</dimen>
+    <dimen name="ts_48sp">48sp</dimen>
+
+</resources>
