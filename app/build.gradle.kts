@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -21,8 +24,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-        buildConfigField("String", "API_KEY", "\"909594533c98883408adef5d56143539\"")
+        buildConfigField("String", "BASE_URL", "\"" + getBaseUrl() + "\"")
+        buildConfigField("String", "API_KEY", "\"" + getApiKey() + "\"")
     }
 
     buildTypes {
@@ -94,4 +97,16 @@ dependencies {
     //custom network sdk
     implementation("com.acuon.networklibrary:simplenetworklibrary:1.0.0")
 
+}
+
+fun getBaseUrl(): Any? {
+    val props = Properties()
+    props.load(FileInputStream(File("secret.properties")))
+    return props["BASE_URL"]
+}
+
+fun getApiKey(): Any? {
+    val props = Properties()
+    props.load(FileInputStream(File("secret.properties")))
+    return props["API_KEY"]
 }
