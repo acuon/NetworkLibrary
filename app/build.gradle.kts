@@ -59,7 +59,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    implementation(project(":simplenetworklibrary"))
+//    implementation(project(":simplenetworklibrary"))
 
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
@@ -87,8 +87,11 @@ dependencies {
     // glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
     kapt("com.github.bumptech.glide:compiler:4.12.0")
-    
+
     //gson
     implementation("com.google.code.gson:gson:2.10.1")
+
+    //custom network sdk
+    implementation("com.acuon.networklibrary:simplenetworklibrary:1.0.0")
 
 }
