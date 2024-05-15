@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -29,6 +30,27 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    publications {
+        register("bar", MavenPublication::class) {
+            groupId = "com.acuon.networklibrary"
+            artifactId = "simplenetworklibrary"
+            version = "1.0.0"
+            artifact("$buildDir/outputs/aar/simplenetworklibrary-release.aar")
+        }
+    }
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/acuon/NetworkLibrary")
+            credentials {
+                username = System.getenv("GITHUB_USER")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
 
